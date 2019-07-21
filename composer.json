@@ -1,0 +1,10 @@
+{
+    "config": {
+      "github-oauth": {
+        "github.com": "13dcd3c118da6e31242322f67b384dd6c49cd2fe"
+      }
+    },
+    "require": {
+        "yiisoft/yii2": "*"
+    }
+}
