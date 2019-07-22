@@ -14,8 +14,8 @@ $I->wantTo('Open the home/join/login pages');
 $I->amOnPage('/');
 $I->see('Welcome');
 
-$I->seeLink('Join', '/site/login');
-$I->seeLink('Login', 'site/login');
+$I->seeLink('Join', '/site/join');
+$I->seeLink('Login', '/site/login');
 
 $I->amOnPage('site/join');
 $I->see('Join us', 'hi');

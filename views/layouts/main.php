@@ -1,6 +1,10 @@
-<?php $this->beginPage();
+<?php
 
-use yii\bootstrap\NavBar; ?>
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+
+$this->beginPage();
+?>
 <html lang="eng">
 <head>
     <title> Video school</title>
@@ -18,6 +22,28 @@ NavBar::begin([
             'class' => 'navbar-default navbar-fixed-top'
     ]
 ]);
+/**
+ * Асоциативнй массив  с ключами лейблами и значениями ссылок
+ */
+$items = [
+        ['label' => 'Join', 'url' => ['/site/join']],
+        ['label' => 'Login', 'url' => ['/site/login']]
+]
+;
+/**
+ * Виджет рендера бокового меню логина
+ * @throws Exception
+ * @return string the rendering result of the widget
+ */
+try {
+    echo Nav::widget([
+        'options' => [
+            'class' => 'navbar-nav navbar-right'],
+        'items' => $items
+    ]);
+} catch (Exception $exception) {
+    $exception->getTraceAsString();
+}
 NavBar::end();
 ?>
 <div class="container" style="margin-top: 60px">
