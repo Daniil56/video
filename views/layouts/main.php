@@ -26,8 +26,8 @@ NavBar::begin([
  * Асоциативнй массив  с ключами лейблами и значениями ссылок
  */
 $items = [
-        ['label' => 'Join', 'url' => ['/site/join']],
-        ['label' => 'Login', 'url' => ['/site/login']]
+        ['label' => 'Join', 'url' => ['/user/join']],
+        ['label' => 'Login', 'url' => ['/user/login']]
 ]
 ;
 /**
