@@ -1,2 +1,2 @@
-<h1>Video1 school</h1>
-Welcome
+<h1>Guest book</h1>
+Welcome guest!

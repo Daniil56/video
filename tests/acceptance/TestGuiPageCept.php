@@ -15,7 +15,7 @@ $I->amOnPage('/');
 $I->see('Welcome');
 
 $I->seeLink('Join', '/site/login');
-$I->seeLink('Login', '*ite/login');
+$I->seeLink('Login', 'site/login');
 
 $I->amOnPage('site/join');
 $I->see('Join us', 'hi');
