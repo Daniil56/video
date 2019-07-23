@@ -24,11 +24,23 @@ NavBar::begin([
 ]);
 /**
  * Асоциативнй массив  с ключами лейблами и значениями ссылок
+ * Представления для гостя иначе для залогиненного user
  */
-$items = [
+if (Yii::$app->user->isGuest) {
+    $items = [
         ['label' => 'Join', 'url' => ['/user/join']],
         ['label' => 'Login', 'url' => ['/user/login']]
-]
+    ];
+} else {
+    try {
+        $items = [
+            ['label' => Yii::$app->user->getIdentity()->name],
+            ['label' => 'Logout', 'url' => ['/user/logout']]
+        ];
+    } catch (Throwable $e) {
+        $e->getTraceAsString();
+    }
+}
 ;
 /**
  * Виджет рендера бокового меню логина

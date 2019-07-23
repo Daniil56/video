@@ -40,4 +40,4 @@ $I->logoutUser();
 
 $dog["password"] = "wrong password";
 $I->loginUser($dog);
-$I->see("Wong passsword");
+$I->see("Wong password");
