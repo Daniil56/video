@@ -1,19 +1,20 @@
 <?php
 namespace Step\Acceptance;
 
+use Faker\Factory;
+
 class UserJoin extends \AcceptanceTester
 {
 
-    public function imagineDogUser()
+    public function imagineFakerUser()
     {
-        $nr = mt_rand(10000, 99999) .
-            mt_rand(10000, 99999) .
-            mt_rand(10000, 99999) ;
+        $faker = Factory::create();
         $user = [
-            'name' => 'dog_' . $nr,
-            'email' => 'dog_' . $nr . '@gmail.com',
-            'password' => 'qwas'
-        ];
+            'name' => $faker->name,
+            'email' => $faker->email,
+            'password' => $faker-> city
+            ];
+        print_r($user);
         return $user;
     }
 

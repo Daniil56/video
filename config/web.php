@@ -12,7 +12,8 @@ return [
         ],
         'request' => [
             'cookieValidationKey' => 'My secret $'
-        ]
+        ],
+        'db' => require (__DIR__ . '/db.php')
     ],
     'modules' => [
         'debug' =>'yii\debug\Module'
