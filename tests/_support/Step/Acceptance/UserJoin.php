@@ -32,16 +32,20 @@ class UserJoin extends \AcceptanceTester
     public function joinUser($user)
     {
         $I = $this;
+        $I->click('Join us');
     }
 
     public function loginUser($user)
     {
         $I = $this;
+        $I->click('Login');
     }
 
     public function logoutUser()
     {
         $I = $this;
+        $I->click('Logout');
+
     }
 
     public function isUserLogged($user)
@@ -52,6 +56,7 @@ class UserJoin extends \AcceptanceTester
     public function noUserLogged($user)
     {
         $I = $this;
+        $I->dontSee($user['name']);
     }
 
 }
