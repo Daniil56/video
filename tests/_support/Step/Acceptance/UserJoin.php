@@ -1,9 +1,10 @@
 <?php
 namespace Step\Acceptance;
 
+use AcceptanceTester;
 use Faker\Factory;
 
-class UserJoin extends \AcceptanceTester
+class UserJoin extends AcceptanceTester
 {
 
     public function imagineFakerUser()
@@ -12,28 +13,26 @@ class UserJoin extends \AcceptanceTester
         $user = [
             'name' => $faker->name,
             'email' => $faker->email,
-            'password' => $faker-> city
+            'password' => $faker-> password
             ];
-        print_r($user);
+//        print_r($user);
         return $user;
     }
 
-    public function imagineFoxUser()
-    {
-        $nr = mt_rand(10000, 99999) .
-            mt_rand(10000, 99999) .
-            mt_rand(10000, 99999) ;
-        $user = [
-            'name' => 'fox' . $nr,
-            'email' => 'fox' . $nr . '@gmail.com',
-            'password' => 'qwas'
-        ];
-        return $user;    }
 
     public function joinUser($user)
     {
         $I = $this;
-        $I->click('Join us');
+        $I->amOnPage('/user/join');
+        $I->see('Join us');
+        $I->fillField('UserJoinForm[name]', $user["name"]);
+        $I->fillField('UserJoinForm[email]', $user["email"]);
+        $I->fillField('UserJoinForm[password]', $user["password"]);
+        $I->fillField('UserJoinForm[repassword]', $user["reapssword"]);
+        $I->click('Create');
+
+
+
     }
 
     public function loginUser($user)
