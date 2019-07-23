@@ -9,4 +9,12 @@ class UserJoinForm extends Model
     public $email;
     public $password;
     public $rePassword;
+
+    public function rules ()
+    {
+        return
+        [
+            [['name','email','password','rePassword'], 'required']
+        ];
+    }
 }
