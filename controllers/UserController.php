@@ -13,22 +13,40 @@ class UserController extends Controller
      * логами вывода сообщений: debug, warning, error.
      */
 {
-    public function actionJoin() {
+    public function actionJoin()
+    {
 //        $userRecord = new UserRecord();
 //        $userRecord->setTestUser();
 //        $userRecord->save();
-        $userJoinForm = new UserJoinForm();
-        return $this->render('join', compact('userJoinForm'));
+        if (Yii::$app->request->isPost) {
+            $result = $this->actionJoinPost();
+        } else {
+            $userJoinForm = new UserJoinForm();
+            $userRecord = new UserRecord();
+            $userRecord->setTestUser();
+            $userJoinForm->setTestRecord($userRecord);
+            $result = $this->render('join', compact('userJoinForm'));
+        }
+        return $result;
     }
 
-    public function actionLogin() {
+    public function actionLogin()
+    {
 //        $uid = UserIdentity::findIdentity(mt_rand(0, 58));
 //        Yii::$app->user->login($uid);
         return $this->render('login');
     }
 
-    public function actionLogout() {
+    public function actionLogout()
+    {
         Yii::$app->user->logout();
-        return$this->redirect("/");
+        return $this->redirect("/");
+    }
+
+    private function actionJoinPost()
+    {
+        $userJoinForm = new UserJoinForm();
+        $userJoinForm->load(Yii::$app->request->post());
+        return $this->render('join', compact('userJoinForm'));
     }
 }

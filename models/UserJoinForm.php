@@ -14,7 +14,18 @@ class UserJoinForm extends Model
     {
         return
         [
-            [['name','email','password','rePassword'], 'required']
+            [['name','email','password','rePassword'], 'required'],
+            ['email', 'email', 'message' => 'Адресс электронный почты указан неверно'],
+            ['name', 'string', 'min' =>3, 'max' => 30],
+            ['password', 'string', 'min' => 8],
+            ['rePassword', 'compare', 'compareAttribute' => 'password']
         ];
+    }
+
+    public function setTestRecord($userRecord)
+    {
+        $this->name = $userRecord->name;
+        $this->email = $userRecord->email;
+        $this->password = $this->rePassword = 'qwas';
     }
 }
