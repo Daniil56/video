@@ -15,9 +15,6 @@ class UserController extends Controller
 {
     public function actionJoin()
     {
-//        $userRecord = new UserRecord();
-//        $userRecord->setTestUser();
-//        $userRecord->save();
         if (Yii::$app->request->isPost) {
             $result = $this->actionJoinPost();
         } else {
@@ -46,7 +43,12 @@ class UserController extends Controller
     private function actionJoinPost()
     {
         $userJoinForm = new UserJoinForm();
-        $userJoinForm->load(Yii::$app->request->post());
+        if ($userJoinForm->load(Yii::$app->request->post()) && $userJoinForm->validate()) {
+            $userRecord = new UserRecord();
+            $userRecord->setUserJoinForm($userJoinForm);
+            $userRecord->save();
+
+        }
         return $this->render('join', compact('userJoinForm'));
     }
 }

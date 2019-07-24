@@ -9,6 +9,12 @@ class UserRecord extends ActiveRecord
         return 'user';
     }
 
+    public static function existIfEmaiUsed($email)
+    {
+        $count = static::find()->where(['email'=>$email])->count();
+        return $count >= 0;
+    }
+
     public function setTestUser()
     {
         $faker = Factory::create();
@@ -16,5 +22,12 @@ class UserRecord extends ActiveRecord
         $this->email = $faker->email;
         $this->passhash = $faker->password;
         $this->status = $faker->randomDigit;
+    }
+
+    public function setUserJoinForm(UserJoinForm $userJoinForm)
+    {
+        $this->name = $userJoinForm->name;
+        $this->email = $userJoinForm->email;
+        $this->passhash = $userJoinForm->password;
     }
 }

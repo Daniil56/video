@@ -15,7 +15,6 @@ class UserJoin extends AcceptanceTester
             'email' => $faker->email,
             'password' => $faker-> password
             ];
-//        print_r($user);
         return $user;
     }
 
