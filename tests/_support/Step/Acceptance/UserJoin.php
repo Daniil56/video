@@ -51,7 +51,6 @@ class UserJoin extends AcceptanceTester
         $I->fillField('UserLoginForm[email]', $user['email']);
         $I->fillField('UserLoginForm[password]', $user['password']);
         $I->click('Enter');
-
     }
 
     public function logoutUser()
