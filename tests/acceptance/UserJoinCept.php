@@ -19,7 +19,7 @@ $I->wantTo('perform actions and see result');
 $dog = $I->imagineFakerUser();
 $fox = $I->imagineFakerUser();
 
-//$I->loginUser($dog);
+$I->loginUser($dog);
 //$I->see("This e-mail does not registered");
 
 $I->joinUser($dog);
