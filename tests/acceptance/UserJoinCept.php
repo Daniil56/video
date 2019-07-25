@@ -4,7 +4,8 @@ use Step\Acceptance\UserJoin;
 
 /**
  * Сценарий теста главной страницы video.localhost.
- * С использованием библиотерки фейкер.
+ * С использованием вспомогательного класса UserJoin и библиотерки фейкер
+ * для генерации пользователей.
  * Сценарий создает двух пользователей fox и dog.
  * Каждый из них должен:
  * по очереди залогиниться и увидеться ошибку так как join не еще прошел;
@@ -14,13 +15,13 @@ use Step\Acceptance\UserJoin;
  * проверить вход по неверному паролю.
  */
 $I = new UserJoin($scenario);
-$I->wantTo('perform actions and see result');
+$I->wantTo('New users join and login');
 
 $dog = $I->imagineFakerUser();
 $fox = $I->imagineFakerUser();
 
 $I->loginUser($dog);
-$I->see("Welcome");
+$I->see("This e-mail does not registered");
 
 $I->joinUser($dog);
 $I->joinUser($fox);
