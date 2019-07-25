@@ -28,7 +28,7 @@ class PasswordHasherTest extends Unit
     {
         $this->assertTrue(true, 'False is not true');
         $userRecord =  UserRecord::findOne(1);
-        $this->assertEquals("Ardith Johns", $userRecord->name, "John does not found");
+        $this->assertEquals("Holden Schowalter", $userRecord->name, "John does not found");
     }
 
     /**

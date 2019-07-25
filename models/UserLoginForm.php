@@ -38,7 +38,7 @@ class UserLoginForm extends Model
     public function errorIfpasswordWrong()
     {
         $this->userRecord = $this->findeUserByThisEmail();
-        if ($this->hasErrors() or $this->userRecord->passhash != $this->password) {
+        if ($this->hasErrors() or !$this->userRecord->validatePassword($this->password)) {
             $this->addError('password', 'Wrong password');
         }
 
