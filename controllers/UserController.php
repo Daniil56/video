@@ -7,6 +7,7 @@ use app\models\UserLoginForm;
 use app\models\UserRecord;
 use Yii;
 use yii\web\Controller;
+use yii\web\Request;
 
 class UserController extends Controller
     /**
@@ -32,6 +33,8 @@ class UserController extends Controller
 
     public function actionLogin()
     {
+        if (Yii::$app->request->isPost)
+            return $this->actionLoginPost();
         $userLoginForm = new UserLoginForm();
         return $this->render('login', compact('userLoginForm'));
     }
@@ -53,5 +56,17 @@ class UserController extends Controller
 
         }
         return $this->render('join', compact('userJoinForm'));
+    }
+
+    private function actionLoginPost()
+    {
+        $userLoginForm = new UserLoginForm();
+        if ($userLoginForm->load(Yii::$app->request->post()) && $userLoginForm->validate()) {
+            $userLoginForm->login();
+            $result = $this->redirect('/');
+        } else {
+        $result = $this->render('login', compact('userLoginForm'));
+    }
+        return $result;
     }
 }

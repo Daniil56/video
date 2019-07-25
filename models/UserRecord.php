@@ -15,6 +15,11 @@ class UserRecord extends ActiveRecord
         return $count > 0;
     }
 
+    public static function findUserByEmail($email)
+    {
+        return static::findOne(['email'=>$email]);
+    }
+
     public function setTestUser()
     {
         $faker = Factory::create();

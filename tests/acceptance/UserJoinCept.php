@@ -20,7 +20,7 @@ $dog = $I->imagineFakerUser();
 $fox = $I->imagineFakerUser();
 
 $I->loginUser($dog);
-//$I->see("This e-mail does not registered");
+$I->see("Welcome");
 
 $I->joinUser($dog);
 $I->joinUser($fox);
@@ -37,7 +37,6 @@ $I->loginUser($fox);
 $I->isUserLogged($fox);
 $I->noUserLogged($dog);
 $I->logoutUser();
-
 $dog["password"] = "wrong password";
 $I->loginUser($dog);
 $I->see("Wrong password");
