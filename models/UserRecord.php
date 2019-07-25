@@ -12,7 +12,7 @@ class UserRecord extends ActiveRecord
     public static function existIfEmaiUsed($email)
     {
         $count = static::find()->where(['email'=>$email])->count();
-        return $count >= 0;
+        return $count > 0;
     }
 
     public function setTestUser()
