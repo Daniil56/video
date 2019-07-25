@@ -19,8 +19,8 @@ $I->wantTo('perform actions and see result');
 $dog = $I->imagineFakerUser();
 $fox = $I->imagineFakerUser();
 
-$I->loginUser($dog);
-$I->see("This e-mail does not registered");
+//$I->loginUser($dog);
+//$I->see("This e-mail does not registered");
 
 $I->joinUser($dog);
 $I->joinUser($fox);
@@ -40,4 +40,4 @@ $I->logoutUser();
 
 $dog["password"] = "wrong password";
 $I->loginUser($dog);
-$I->see("Wong password");
+$I->see("Wrong password");

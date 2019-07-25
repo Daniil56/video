@@ -11,6 +11,8 @@ class UserController extends Controller
     /**
      * Контроллер index.php с подключенным модулем дебага и
      * логами вывода сообщений: debug, warning, error.
+     * @return fucntion должен быть один выход из функции, так как это позволяет провести тестирование метода с отдним
+     * маркером дебага
      */
 {
     public function actionJoin()
@@ -47,6 +49,7 @@ class UserController extends Controller
             $userRecord = new UserRecord();
             $userRecord->setUserJoinForm($userJoinForm);
             $userRecord->save();
+            $this->redirect('/user/login');
 
         }
         return $this->render('join', compact('userJoinForm'));

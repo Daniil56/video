@@ -27,7 +27,7 @@ class UserJoin extends AcceptanceTester
         $I->fillField('UserJoinForm[name]', $user["name"]);
         $I->fillField('UserJoinForm[email]', $user["email"]);
         $I->fillField('UserJoinForm[password]', $user["password"]);
-        $I->fillField('UserJoinForm[repassword]', $user["reapssword"]);
+        //$I->fillField('UserJoinForm[rePassword]', $user["rePassword"]);
         $I->click('Create');
 
 
