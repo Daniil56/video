@@ -9,7 +9,9 @@ class UserLoginForm extends Model
 {
     public $email;
     public $password;
+    public $remember;
     private $userRecord;
+
 
     public function rules()
     {
@@ -17,7 +19,8 @@ class UserLoginForm extends Model
             [['email', 'password'], 'required'],
             ['email', 'email'],
             ['email', 'errorIfEmailNotFound'],
-            ['password', 'errorIfpasswordWrong']
+            ['password', 'errorIfpasswordWrong'],
+            ['remember', 'boolean']
         ];
     }
 
@@ -49,7 +52,8 @@ class UserLoginForm extends Model
         if (!$this->hasErrors()) {
             $this->userRecord = $this->findeUserByThisEmail();
             $userIdentity = UserIdentity::findIdentity($this->userRecord->id);
-            Yii::$app->user->login($userIdentity);
+            Yii::$app->user->login($userIdentity,
+                $this->remember ? 3600 * 24 * 30 : 0);
         }
     }
 

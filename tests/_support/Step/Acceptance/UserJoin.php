@@ -39,8 +39,6 @@ class UserJoin extends AcceptanceTester
         $I->fillField('UserJoinForm[rePassword]', $user["password"]);
         $I->click('Create');
 
-
-
     }
 
     public function loginUser($user)

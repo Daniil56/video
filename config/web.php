@@ -15,7 +15,8 @@ return [
         ],
         'db' => require (__DIR__ . '/db.php'),
         'user' => [
-            'identityClass' => 'app\models\UserIdentity'
+            'identityClass' => 'app\models\UserIdentity',
+            'enableAutoLogin' => true
         ]
     ],
     'modules' => [

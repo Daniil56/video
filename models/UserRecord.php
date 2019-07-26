@@ -2,6 +2,7 @@
 namespace app\models;
 use Faker\Factory;
 use Yii;
+use yii\base\Exception;
 use yii\db\ActiveRecord;
 
 class UserRecord extends ActiveRecord
@@ -39,8 +40,12 @@ class UserRecord extends ActiveRecord
     }
 
     public function setPassword($password) {
-
-        $this->passhash = Yii::$app->security->generatePasswordHash($password);
+        try {
+            $this->passhash = Yii::$app->security->generatePasswordHash($password);
+            $this->authokey = Yii::$app->security->generateRandomString(100);
+        } catch (Exception $exception) {
+            $exception->getTraceAsString();
+        }
     }
 
     public function validatePassword($password) {

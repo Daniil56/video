@@ -7,7 +7,7 @@ $this->beginPage();
 ?>
 <html lang="eng">
 <head>
-    <title> Video school</title>
+    <title> Web developing</title>
     <?php $this->head(); ?>
 
 </head>
